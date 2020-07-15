@@ -17,7 +17,7 @@ class Movies extends Component {
   };
 
   keyPressHandle = (e) => {
-    
+    e.preventDefault()
     switch (e.key) {
       case "Enter":
         this.showMovie();
@@ -74,9 +74,9 @@ class Movies extends Component {
     }
   };
 
-  updateCurrentHeight(){
+  updateCurrentHeight = () => {
     const currentRow = this.state.mover.row
-    window.scrollTo({top:(currentRow-1)*(this.state.currentMovie.height*1.2) })
+    window.scrollTo({top:(currentRow-1)*(this.state.currentMovie.height*1.2) , behavior: "smooth" })
   }
 
   showMovie = () => {
