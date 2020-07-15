@@ -18,24 +18,27 @@ class Movie extends Component {
     
   }
 
-  someFn = () => {
+  someFn = height => {
     this.props.currentMovie({
       title:this.props.title,
       overview:this.props.overview,
       vote_average:this.props.vote_average,
-      imgSrc:this.props.imgSrc
+      imgSrc:this.props.imgSrc,
+      height: height
     })
   }
 
   componentDidUpdate(){
     if(this.props.activeMovie){
-      this.someFn()
+      const height = document.getElementById('current').clientHeight;
+      this.someFn(height)
     }
   }
 
   componentDidMount(){
     if(this.props.activeMovie){
-      this.someFn()
+      const height = document.getElementById('current').clientHeight;
+      this.someFn(height)
     }
   }
 
@@ -48,7 +51,7 @@ class Movie extends Component {
     }
 
     return (
-      <div className={str.join(" ")} onKeyPress={this.update.bind(this)}>
+      <div className={str.join(" ")} id="current">
         {/* Ukoliko je link nevalidan stavljamo titl samog filma u alt koji ce se prikazati u tom slucaju */}
         <img
           src={`${this.state.imageServer}${this.props.imgSrc}`}

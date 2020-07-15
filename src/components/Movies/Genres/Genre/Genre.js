@@ -11,6 +11,7 @@ class Genre extends Component {
     displayMovies: 6,
     movies: [],
     error: false,
+    height:0
   };
 
   componentDidMount() {
@@ -20,7 +21,10 @@ class Genre extends Component {
         `https://api.themoviedb.org/3/discover/movie?with_genres=${this.props.id}&api_key=d38aa8716411ef7d8e9054b34a6678ac`
       )
       .then((response) => {
-        const moviesSliced = response.data.results.slice(0, this.state.displayMovies);
+        const moviesSliced = response.data.results.slice(
+          0,
+          this.state.displayMovies
+        );
         this.setState({ movies: moviesSliced });
       })
       .catch((error) => {
@@ -32,15 +36,14 @@ class Genre extends Component {
     this.props.numberOfMoviesPerGenre(this.state.displayMovies);
   };
 
-
-  componentWillMount(){
-    this.updateNumberofMoviesPerGenre()
+  componentWillMount() {
+    this.updateNumberofMoviesPerGenre();
   }
 
   render() {
     let genre = this.props.currentColumn;
 
-    if(!this.props.selectedGenre){
+    if (!this.props.selectedGenre) {
       genre = null;
     }
 
@@ -68,10 +71,9 @@ class Genre extends Component {
       });
     }
 
-   
     return (
-      <div className={genre ? "Genre current" : "Genre"}>
-        <h2 >{this.props.genre}</h2>
+      <div className={genre ? "Genre current" : "Genre"} ref={ (divElement) => { this.divElement = divElement } }>
+        <h2>{this.props.genre}</h2>
         <div className="movie-container">{movies}</div>
       </div>
     );

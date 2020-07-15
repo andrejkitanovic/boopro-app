@@ -11,10 +11,11 @@ class Movies extends Component {
       column: 1,
     },
     currentMovie: {},
-    showMovie: false,
+    showMovie: false
   };
 
   keyPressHandle = (e) => {
+    
     switch (e.key) {
       case "Enter":
         this.showMovie();
@@ -27,9 +28,11 @@ class Movies extends Component {
         break;
       case "ArrowUp":
         this.updateMover(true, false);
+        this.updateCurrentHeight()
         break;
       case "ArrowDown":
         this.updateMover(true, true);
+        this.updateCurrentHeight()
         break;
       default:
         break;
@@ -69,6 +72,11 @@ class Movies extends Component {
     }
   };
 
+  updateCurrentHeight(){
+    const currentRow = this.state.mover.row
+    window.scrollTo({top:(currentRow-1)*this.state.currentMovie.height })
+  }
+
   showMovie = () => {
     const currentState = this.state.showMovie;
     this.setState({ showMovie: !currentState });
@@ -97,6 +105,11 @@ class Movies extends Component {
   currentMovieHandler = (childData) => {
     this.setState({ currentMovie: childData });
   };
+
+  currentGenreHeight = (childData) => {
+    this.setState({genreHeight: childData})
+  }
+
 
   render() {
     let selectedMovie = null;

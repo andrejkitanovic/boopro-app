@@ -26,7 +26,6 @@ class Genres extends Component {
               numberOfMoviesPerGenre={this.props.numberOfMoviesPerGenre}
               selectedGenre={this.props.currentRow === number}
               currentColumn={this.props.currentColumn}
-
               currentMovie={this.props.currentMovie}
             />
           );
