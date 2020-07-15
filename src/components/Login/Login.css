@@ -1,0 +1,19 @@
+.Login{
+    text-align: center;
+}
+
+.Login h1{
+    font-size: 50px;
+    margin:50px;
+}
+
+.Login button{
+    padding:5px 25px;
+    margin:15px;
+}
+
+.Login .Error{
+    margin-top: 20px;
+    font-size: 20px;
+    color:#940e0e;
+}

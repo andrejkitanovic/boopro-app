@@ -3,7 +3,7 @@
     position: fixed;
     width: 100%;
     height: 100%;
-    background:rgb(0,0,0,0.8);
+    background:rgb(0,0,0,0.9);
     z-index: 1000;
     animation: opacity 1 .5s forwards;
 }

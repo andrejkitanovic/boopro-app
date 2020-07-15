@@ -2,6 +2,8 @@ import React, { Component, Fragment } from "react";
 import Genres from "./Genres/Genres";
 import SelectedMovie from "./SelectedMovie/SelectedMovie";
 
+import {Redirect , Route} from 'react-router-dom'
+
 class Movies extends Component {
   state = {
     numberOfGenres: 0,
@@ -74,7 +76,7 @@ class Movies extends Component {
 
   updateCurrentHeight(){
     const currentRow = this.state.mover.row
-    window.scrollTo({top:(currentRow-1)*this.state.currentMovie.height })
+    window.scrollTo({top:(currentRow-1)*(this.state.currentMovie.height*1.2) })
   }
 
   showMovie = () => {
@@ -84,6 +86,7 @@ class Movies extends Component {
 
   //Dodajemo globalne eventListenere
   componentDidMount() {
+
     window.addEventListener("keydown", this.keyPressHandle);
   }
 
@@ -110,6 +113,8 @@ class Movies extends Component {
     this.setState({genreHeight: childData})
   }
 
+  
+    
 
   render() {
     let selectedMovie = null;
@@ -119,7 +124,8 @@ class Movies extends Component {
     }
 
     return (
-      <Fragment>
+      <Route>
+        {localStorage.getItem('access_token') ? <Fragment>
          {selectedMovie}
         <Genres
           numberOfGenres={this.numberOfGenresHandler}
@@ -129,7 +135,9 @@ class Movies extends Component {
           currentMovie={this.currentMovieHandler}
         />
        
-      </Fragment>
+      </Fragment> : <Redirect to={'/'}/>}
+      
+      </Route>
     );
   }
 }
