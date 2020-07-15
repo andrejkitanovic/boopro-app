@@ -1,0 +1,16 @@
+.Movie {
+    border: 5px solid transparent;
+    transition:.2s;
+}
+
+.Movie img{
+    display:inline-block;
+    max-width: 100%;
+}
+
+.Movie.active{
+    z-index: 10;
+    border:5px solid #940e0e;
+    box-shadow: 0px 0px 20px 10px #940e0e;
+    transform: scale(1.1);
+}

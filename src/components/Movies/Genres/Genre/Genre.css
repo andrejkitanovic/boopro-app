@@ -1,0 +1,24 @@
+.Genre{
+    transition: .4s;
+}
+
+.Genre.current{
+    background:rgba(255,255,255,0.2);
+    box-shadow: 0px 0px 20px 20px rgba(255,255,255,0.2);
+}
+
+.Genre h2{
+    font-size:calc(15px + 1vw);
+    margin-left:20px;
+    transition: .4s;
+    padding:25px;
+}
+
+.Genre.current h2{
+    font-size: calc(30px + 1vw);
+}
+
+.Genre .movie-container{
+    display:flex;
+    width: 100%;
+}
